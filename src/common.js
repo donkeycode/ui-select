@@ -116,6 +116,15 @@ var uis = angular.module('ui.select', [])
   };
 })
 
+.service('uiSelectMaxErr', function() {
+  var maxErr = angular.$$maxErr('ui.select');
+  return function() {
+    var error = maxErr.apply(this, arguments);
+    var message = error.message.replace(new RegExp('\nhttp://errors.angularjs.org/.*'), '');
+    return new Error(message);
+  };
+})
+
 // Recreates old behavior of ng-transclude. Used internally.
 .directive('uisTranscludeAppend', function () {
   return {

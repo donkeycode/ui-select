@@ -192,6 +192,14 @@ uis.directive('uiSelect',
             throw uiSelectMinErr('transcluded', "Expected 1 .ui-select-choices but got '{0}'.", transcludedChoices.length);
           }
           element.querySelectorAll('.ui-select-choices').replaceWith(transcludedChoices);
+
+          var transcludedFooter = transcluded.querySelectorAll('.ui-select-footer');
+          transcludedFooter.removeAttr('ui-select-footer'); //To avoid loop in case directive as attr
+          transcludedFooter.removeAttr('data-ui-select-footer'); // Properly handle HTML5 data-attributes
+          if (transcludedFooter.length > 1) {
+            throw uiSelectMaxErr('transcluded', "Expected 1 .ui-select-footer but got '{0}'.", transcludedFooter.length);
+          }
+          element.querySelectorAll('.ui-select-choices').append(transcludedFooter);
         });
 
         // Support for appending the select field to the body when its open

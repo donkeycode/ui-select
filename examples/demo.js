@@ -14,7 +14,7 @@ app.filter('propsFilter', function() {
 
     if (angular.isArray(items)) {
       var keys = Object.keys(props);
-        
+
       items.forEach(function(item) {
         var itemMatches = false;
 
@@ -456,4 +456,9 @@ app.controller('DemoCtrl', function($scope, $http, $timeout, $interval) {
     {name: 'Zambia', code: 'ZM'},
     {name: 'Zimbabwe', code: 'ZW'}
   ];
+
+  $scope.footerClick = function($event) {
+    $event.preventDefault();
+    alert('Footer clicked');
+  };
 });
