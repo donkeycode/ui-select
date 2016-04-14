@@ -14,7 +14,7 @@ uis.directive('uiSelectChoices',
       return theme + '/choices.tpl.html';
     },
 
-    compile: function(tElement, tAttrs)
+    compile: function(tElement, tAttrs) {
       if (!tAttrs.repeat) throw uiSelectMinErr('repeat', "Expected 'repeat' expression.");
 
       return function link(scope, element, attrs, $select, transcludeFn) {
