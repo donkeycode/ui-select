@@ -1,7 +1,7 @@
 /*!
  * ui-select
  * http://github.com/angular-ui/ui-select
- * Version: 0.14.1 - 2016-01-31T17:44:36.754Z
+ * Version: 0.14.1 - 2016-04-14T10:00:28.238Z
  * License: MIT
  */
 
@@ -194,12 +194,12 @@ uis.directive('uiSelectChoices',
     transclude: true,
     templateUrl: function(tElement) {
       // Gets theme attribute from parent (ui-select)
+      tElement.addClass('ui-select-choices');
       var theme = tElement.parent().attr('theme') || uiSelectConfig.theme;
       return theme + '/choices.tpl.html';
     },
 
-    compile: function(tElement, tAttrs) {
-
+    compile: function(tElement, tAttrs)
       if (!tAttrs.repeat) throw uiSelectMinErr('repeat', "Expected 'repeat' expression.");
 
       return function link(scope, element, attrs, $select, transcludeFn) {
@@ -1226,6 +1226,7 @@ uis.directive('uiSelectFooter', [
       transclude: true,
       templateUrl: function(tElement) {
         // Gets theme attribute from parent (ui-select)
+        tElement.addClass('ui-select-footer');
         var theme = tElement.parent().attr('theme') || uiSelectConfig.theme;
         return theme + '/footer.tpl.html';
       }
@@ -1240,6 +1241,7 @@ uis.directive('uiSelectMatch', ['uiSelectConfig', function(uiSelectConfig) {
     transclude: true,
     templateUrl: function(tElement) {
       // Gets theme attribute from parent (ui-select)
+      tElement.addClass('ui-select-match');
       var theme = tElement.parent().attr('theme') || uiSelectConfig.theme;
       var multi = tElement.parent().attr('multiple');
       return theme + (multi ? '/match-multiple.tpl.html' : '/match.tpl.html');
