@@ -1,7 +1,7 @@
 /*!
  * ui-select
  * http://github.com/angular-ui/ui-select
- * Version: 0.14.1 - 2016-04-14T10:00:28.238Z
+ * Version: 0.14.1 - 2016-04-14T10:07:36.597Z
  * License: MIT
  */
 
@@ -199,7 +199,7 @@ uis.directive('uiSelectChoices',
       return theme + '/choices.tpl.html';
     },
 
-    compile: function(tElement, tAttrs)
+    compile: function(tElement, tAttrs) {
       if (!tAttrs.repeat) throw uiSelectMinErr('repeat', "Expected 'repeat' expression.");
 
       return function link(scope, element, attrs, $select, transcludeFn) {
