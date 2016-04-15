@@ -1,7 +1,7 @@
 /*!
  * ui-select
  * http://github.com/angular-ui/ui-select
- * Version: 0.14.1 - 2016-04-14T10:07:36.597Z
+ * Version: 0.14.1 - 2016-04-15T13:05:27.557Z
  * License: MIT
  */
 
@@ -1053,13 +1053,15 @@ uis.directive('uiSelect',
           }
           element.querySelectorAll('.ui-select-choices').replaceWith(transcludedChoices);
 
-          var transcludedFooter = transcluded.querySelectorAll('.ui-select-footer');
-          transcludedFooter.removeAttr('ui-select-footer'); //To avoid loop in case directive as attr
-          transcludedFooter.removeAttr('data-ui-select-footer'); // Properly handle HTML5 data-attributes
-          if (transcludedFooter.length > 1) {
-            throw uiSelectMaxErr('transcluded', "Expected 1 .ui-select-footer but got '{0}'.", transcludedFooter.length);
-          }
-          element.querySelectorAll('.ui-select-choices').append(transcludedFooter);
+          $timeout(function () {
+              var transcludedFooter = transcluded.querySelectorAll('.ui-select-footer');
+              transcludedFooter.removeAttr('ui-select-footer'); //To avoid loop in case directive as attr
+              transcludedFooter.removeAttr('data-ui-select-footer'); // Properly handle HTML5 data-attributes
+              if (transcludedFooter.length > 1) {
+                throw uiSelectMaxErr('transcluded', "Expected 1 .ui-select-footer but got '{0}'.", transcludedFooter.length);
+              }
+              element.querySelectorAll('.ui-select-choices').append(transcludedFooter);
+          });
         });
 
         // Support for appending the select field to the body when its open
